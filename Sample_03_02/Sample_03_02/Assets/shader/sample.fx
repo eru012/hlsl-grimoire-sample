@@ -37,11 +37,13 @@ float4 PSMain(VSOutput vsOut) : SV_Target0
 {
     // step-5 テクスチャカラーをサンプリングして返す
     float4 texColor = g_texture.Sample(
-        g_sampler,  // 第1引数はサンプラー。今は気にしなくてよい
-        vsOut.uv    // 第2引数はUV座標
+    g_sampler,//第一引数はサンプラー。気にしなくてよい
+    vsOut.uv//第二引数はUV座標
     );
+//return texColor;
+float4 outColor = texColor;
+outColor.rgb = lerp(vsOut.color, texColor.rgb, 0.25f);
     return texColor;
 
-    // 以下はコメントアウト
     // return vsOut.color;
 }

@@ -30,23 +30,33 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	triangle.Init(rootSignature);
 
 	// step-1 三角形ポリゴンにUV座標を設定
+	//三角
+	/*
 	triangle.SetUVCoord(
-		0,      // 頂点の番号
-		0.0f,   // U座標
-		1.0f    // V座標
+		0,//頂点の番号
+		0.0f,//U座標
+		1.0f//V座標
 	);
 
-	triangle.SetUVCoord(
-		1,      // 頂点の番号
-		0.5f,   // U座標
-		0.0f    // V座標
-	);
+	triangle.SetUVCoord(1, 0.5f, 0.0f);
 
-	triangle.SetUVCoord(
-		2,      // 頂点の番号
-		1.0f,   // U座標
-		1.0f    // V座標
-	);
+	triangle.SetUVCoord(2, 1.0f, 1.0f);
+	*/
+
+
+
+	//左右反転
+	/*
+	triangle.SetUVCoord(1, -0.5f, 0.0f);
+
+	triangle.SetUVCoord(2, -1.0f, 1.0f);
+	*/
+
+	//四角形
+	triangle.SetUVCoord(0, 0.0f, 1.0f);
+	triangle.SetUVCoord(1, 0.0f, 0.0f);
+	triangle.SetUVCoord(2, -1.0f, 0.0f);
+	triangle.SetUVCoord(3, -1.0f, 1.0f);
 
 	// step-2 テクスチャをロード
 	Texture tex;
@@ -61,8 +71,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		0,  // レジスタ番号
 		tex // レジスタに設定するテクスチャ
 	);
-	ds.Commit();                    // ディスクリプタヒープへの登録を確定
-
+	ds.Commit();                    //ディスクリプタヒープへの登録を確定
 	//////////////////////////////////////
 	// 初期化を行うコードを書くのはここまで！！！
 	//////////////////////////////////////
