@@ -49,6 +49,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     // Init()に初期化オブジェクトを渡して初期化する
     test2D.Init(spriteInitData);
 
+
+    float addNumber = 0.01f;
+    bool plus = true;
+
     //////////////////////////////////////
     // 初期化を行うコードを書くのはここまで！！！
     //////////////////////////////////////
@@ -64,10 +68,34 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
         // ここから絵を描くコードを記述する
         //////////////////////////////////////
         // ワイプサイズを増やして少しずつワイプさせる
+        /*
         monochromeRate += 0.01f;
         if (monochromeRate > 1.0f) {
             monochromeRate = 1.0f;
         }
+        */
+
+        monochromeRate += addNumber;
+        if (plus == true)
+        {
+            if (monochromeRate > 1.0f)
+            {
+                monochromeRate = 1.0f;
+                addNumber = -1 * addNumber;
+                plus = false;
+            }
+
+        }
+        if (plus == false)
+        {
+            if (monochromeRate < 0.0f)
+            {
+                monochromeRate = 0;
+                addNumber = -1 * addNumber;
+                plus = true;
+            }
+        }
+
         // スプライトのドローコールを実行する
         test2D.Draw(renderContext);
 
